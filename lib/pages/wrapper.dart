@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:unititled11/pages/login_page.dart';
-import 'package:unititled11/pages/shop_page.dart';
+import 'package:online_ecommerce_app/pages/login_page.dart';
+import 'package:online_ecommerce_app/pages/shop_page.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({super.key});

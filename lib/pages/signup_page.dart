@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:unititled11/pages/wrapper.dart';
+import 'package:online_ecommerce_app/pages/wrapper.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});

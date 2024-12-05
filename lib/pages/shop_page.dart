@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:unititled11/Pages/category_page.dart';
+import 'package:online_ecommerce_app/Pages/category_page.dart';
 import 'package:flutter/material.dart';
 
 class ShopPage extends StatefulWidget {

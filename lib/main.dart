@@ -1,25 +1,68 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:unititled11/pages/wrapper.dart';
-void main() async {
-  // Correct method name for ensuring widget binding initialization
-  WidgetsFlutterBinding.ensureInitialized();
+import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
+import 'package:online_ecommerce_app/pages/wrapper.dart';
 
-  // Correcting the Firebase initialization syntax
-  await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyB0xOL2zHQaW7epJ98F3iNi9rw3AxCYs5Q",
-      appId: "1:108880059619:web:5e5d1c8b02fca33541b9d6",
-      messagingSenderId: "108880059619",
-      projectId: "flutter-web-connection-fce85",
-    ),
-  );
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build the app using the main structure.
+    await tester.pumpWidget(const MyApp());
 
-  runApp(
-    GetMaterialApp(
+    // Verify that the initial counter text exists.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame update.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that the counter text has been updated.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Wrapper(),
-    ),
-  );
+      home: const CounterScreen(),
+    );
+  }
+}
+
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({Key? key}) : super(key: key);
+
+  @override
+  _CounterScreenState createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Counter Test'),
+      ),
+      body: Center(
+        child: Text('$_counter', style: const TextStyle(fontSize: 32)),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
 }
